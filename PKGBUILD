@@ -82,12 +82,14 @@ source=("${pkgname}-${pkgver}::https://github.com/ArduPilot/ardupilot/archive/Co
         "libcanard::https://github.com/ArduPilot/libcanard/archive/99163fc2369e5e5f75f8473f0b950b3418830d3f.tar.gz"
         "mavlink::https://github.com/ArduPilot/mavlink/archive/6e08c0757a1e90c461a8caf1a8d5b724abf3ca57.tar.gz"
         "uavcan::https://github.com/ArduPilot/uavcan/archive/3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0.tar.gz"
+        "waf::https://github.com/ArduPilot/waf/archive/51f1529bd20759642e9fd0a8db648da9ba380b18.tar.gz"
        )
 sha256sums=('26defe4a6d73da802ec152ff9ab9ad4e2673a16ff86f053e59e5369b6f67c355'
             'SKIP'
             'c09b0342a77ecd9ea99331d54f51edd74b0050bd7575d4abee3a484bdcdee0b1'
             '1d93d928503561f2ccb307245f6789c3437ad469d0efba637e97a90fb49e5aa8'
             'f9638099720152f332b33bd26de24bde9c14d8afae24aa19e4e8da485145c84e'
+            '4f0dc57b97c535520b359e54f1fab5aecbcc5490b79a436330b126ad92164887'
            )
 
 _pkgname=ardupilot-Copter
@@ -100,6 +102,8 @@ prepare() {
           "${_pkgname}-${pkgver}/modules/mavlink"
     mv -n uavcan-3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0/* \
           "${_pkgname}-${pkgver}/modules/uavcan"
+    mv -n waf-51f1529bd20759642e9fd0a8db648da9ba380b18/* \
+          "${_pkgname}-${pkgver}/modules/waf"
           
     cd "ardupilot-Copter-$pkgver"
     patch --forward --strip=1 --input="${srcdir}/13921.patch"
